@@ -8,15 +8,17 @@ extern Hazel::Application* Hazel:: CreateApplication();
 
 /// <summary>
 /// 将main函数和Sandbox解耦和
-/// 不然每次编译都需要把HazelEngine.dll拉到Sandbox项目里
-/// 解耦合以后,Sandbox就只需要引用Hazel.h
+/// 解耦合以后,Sandbox就只需要实现创建应用,而不需要实现启动流程
 /// 然后实现CreateApplication即可
 /// </summary>
 /// <param name="argc"></param>
 /// <param name="argv"></param>
 /// <returns></returns>
 int main(int argc,char** argv) {
-	printf("Hazel Engine\n");
+	Hazel::Log::Init();
+	HZ_CORE_WARN("初始化Log!");
+	HZ_INFO("你好! Var={0}",5);
+
 	auto app = Hazel::CreateApplication();
 	app->Run();
 	delete app;
