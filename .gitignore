@@ -1,4 +1,6 @@
 #Directories
-GameEngine/HazelEngine/.vs/
-GameEngine/HazelEngine/bin/
-GameEngine/HazelEngine/bin-init/
+.vs/
+bin/
+bin-init/
+
+.users
