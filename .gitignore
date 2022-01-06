@@ -1,6 +1,6 @@
 #Directories
 .vs/
-bin/
-bin-init/
+GameEngine/bin/
+GameEngine/bin-init/
 
 .users

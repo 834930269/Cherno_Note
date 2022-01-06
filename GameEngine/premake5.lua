@@ -23,7 +23,7 @@ project "HazelEngine"
     }
 
     includedirs{
-        "%{prj.name}/HazelEngine/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include"
     }
 
     filter "system:windows"
@@ -39,18 +39,18 @@ project "HazelEngine"
 
         --将dll从HazelEngine移到Sandbox中
         postbuildcommands{
-            ("{COPY} %(cfg.buildtarget.relpath) ../bin/" .. outputdir .. "/Sandbox")
+            ("{COPY} %{cfg.buildtarget.relpath} ../bin/"..outputdir.."/Sandbox")
         }
     
-    filter "configuration:Debug"
+    filter "configurations:Debug"
         defines "HZ_DEBUG"
         symbols "On"
 
-    filter "configuration:Release"
+    filter "configurations:Release"
         defines "HZ_RELEASE"
         symbols "On"
 
-    filter "configuration:Dist"
+    filter "configurations:Dist"
         defines "HZ_DIST"
         symbols "On"
     
@@ -64,12 +64,12 @@ project "Sandbox"
     objdir ("bin-init/"..outputdir.."/%{prj.name}")
 
     files{
-        "%{prj.name}/Sandbox/src/**.h",
-        "%{prj.name}/Sandbox/src/**.cpp",
+        "%{prj.name}/src/**.h",
+        "%{prj.name}/src/**.cpp",
     }
 
     includedirs{
-        "HazelEngine/HazelEngine/vendor/spdlog/include",
+        "HazelEngine/vendor/spdlog/include",
         "HazelEngine/src"
     }
 
@@ -87,14 +87,14 @@ project "Sandbox"
             "HZ_PLATFORM_WINDOWS",
         }
     
-    filter "configuration:Debug"
+    filter "configurations:Debug"
         defines "HZ_DEBUG"
         symbols "On"
 
-    filter "configuration:Release"
+    filter "configurations:Release"
         defines "HZ_RELEASE"
         symbols "On"
 
-    filter "configuration:Dist"
+    filter "configurations:Dist"
         defines "HZ_DIST"
         symbols "On"
