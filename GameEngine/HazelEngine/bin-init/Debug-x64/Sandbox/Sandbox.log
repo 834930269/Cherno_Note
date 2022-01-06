@@ -1,6 +1,0 @@
-﻿  SandboxApp.cpp
-C:\G\读书笔记\Github_Repo\Cherno_Note\GameEngine\HazelEngine\src\Hazel\Log.h(20,42): warning C4251: “Hazel::Log::s_CoreLogger”: class“std::shared_ptr<spdlog::logger>”需要有 dll 接口由 class“Hazel::Log”的客户端使用
-C:\G\读书笔记\Github_Repo\Cherno_Note\GameEngine\HazelEngine\HazelEngine\vendor\spdlog\include\spdlog\details\registry.h(34): message : 参见“std::shared_ptr<spdlog::logger>”的声明
-C:\G\读书笔记\Github_Repo\Cherno_Note\GameEngine\HazelEngine\src\Hazel\Log.h(21,42): warning C4251: “Hazel::Log::s_ClientLogger”: class“std::shared_ptr<spdlog::logger>”需要有 dll 接口由 class“Hazel::Log”的客户端使用
-C:\G\读书笔记\Github_Repo\Cherno_Note\GameEngine\HazelEngine\HazelEngine\vendor\spdlog\include\spdlog\details\registry.h(34): message : 参见“std::shared_ptr<spdlog::logger>”的声明
-  Sandbox.vcxproj -> C:\G\读书笔记\Github_Repo\Cherno_Note\GameEngine\HazelEngine\bin\Debug-x64\Sandbox\Sandbox.exe

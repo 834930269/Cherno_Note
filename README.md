@@ -7,3 +7,6 @@ Cherno系列手记
 
 日志(spdlog):  
 https://github.com/gabime/spdlog
+
+编译(premake):  
+https://github.com/premake/premake-core/releases
