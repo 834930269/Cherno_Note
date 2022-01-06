@@ -1,3 +1,0 @@
-[submodule "GameEngine/HazelEngine/vendor/spdlog"]
-	path = GameEngine/HazelEngine/vendor/spdlog
-	url = https://github.com/gabime/spdlog.git
