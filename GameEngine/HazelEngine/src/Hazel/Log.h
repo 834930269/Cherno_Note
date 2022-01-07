@@ -3,6 +3,8 @@
 #include<memory.h>
 #include "Core.h"
 #include "spdlog/spdlog.h"
+//添加这个头文件,可以读取重写ostream的流
+#include <spdlog/fmt/ostr.h>
 
 namespace Hazel {
 	class HAZEL_API Log
