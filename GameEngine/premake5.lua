@@ -1,4 +1,4 @@
-workspace "HazelEngine"
+workspace "Hazel"
     architecture "x64"
 
     configurations{
@@ -9,13 +9,17 @@ workspace "HazelEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-project "HazelEngine"
-    location "HazelEngine"
+project "Hazel"
+    location "Hazel"
     kind "SharedLib"
     language "C++"
 
     targetdir ("bin/"..outputdir.."/%{prj.name}")
     objdir ("bin-init/"..outputdir.."/%{prj.name}")
+
+    -- 全局的预编译头文件
+    pchheader "hzpch.h"
+    pchsource "Hazel/src/hzpch.cpp"
 
     files{
         "%{prj.name}/src/**.h",
@@ -70,12 +74,12 @@ project "Sandbox"
     }
 
     includedirs{
-        "HazelEngine/vendor/spdlog/include",
-        "HazelEngine/src"
+        "Hazel/vendor/spdlog/include",
+        "Hazel/src"
     }
 
     links{
-        "HazelEngine"
+        "Hazel"
     }
 
     filter "system:windows"
