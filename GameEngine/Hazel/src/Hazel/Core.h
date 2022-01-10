@@ -10,4 +10,14 @@
 	#error Hazel only support Windows!
 #endif
 
+//Assert,断言,需要开启的话在Premake中添加
+//发行版本中会被移除,所以不会有性能损耗
+#ifdef HZ_ENABLE_ASSERTS
+	#define HZ_ASSERT(x, ...) { if(!(x)) { HZ_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define HZ_CORE_ASSERT(x, ...) { if(!(x)) { HZ_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define HZ_ASSERT(x, ...)
+	#define HZ_CORE_ASSERT(x, ...)
+#endif
+
 #define BIT(x) (1<<x)

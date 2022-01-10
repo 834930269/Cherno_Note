@@ -4,7 +4,7 @@
 
 #ifdef HZ_PLATFORM_WINDOWS
 
-extern Hazel::Application* Hazel:: CreateApplication();
+extern Hazel::Application* Hazel::CreateApplication();
 
 /// <summary>
 /// 将main函数和Sandbox解耦和

@@ -11,6 +11,9 @@ https://github.com/gabime/spdlog
 编译(premake):  
 https://github.com/premake/premake-core/releases
 
+跨平台窗口(GLFW - 不支持DirectX,后面可能会改):
+https://github.com/TheCherno/glfw
+
 ## 项目启动流程
 
 先进入`GameEngine`目录  
