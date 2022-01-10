@@ -11,9 +11,9 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "Hazel/vendor/glfw/include"
+IncludeDir["GLFW"] = "Hazel/vendor/GLFW/include"
 
-include "Hazel/vendor/glfw"
+include "Hazel/vendor/GLFW"
 
 project "Hazel"
     location "Hazel"
