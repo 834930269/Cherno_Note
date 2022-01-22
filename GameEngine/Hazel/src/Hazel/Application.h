@@ -11,6 +11,7 @@ namespace Hazel
 	//使用HAZEL_API宏代替dllimport和dllexport可以增加代码的复用性
 	//比如可以在沙盒环境下使用dllimport
 	//而在HazelEngine环境下使用dllexport
+	//且是一个单例
 	class HAZEL_API Application {
 	public:
 		Application();
@@ -24,13 +25,15 @@ namespace Hazel
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 #pragma endregion
-
+		inline static Application& Get() { return *s_Instance; }
+		inline Window& GetWindow() { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		static Application* s_Instance;
 	};
 
 	//应该由客户端定义
