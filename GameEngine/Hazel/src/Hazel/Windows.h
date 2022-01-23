@@ -40,6 +40,12 @@ namespace Hazel
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
 
+		/// <summary>
+		/// 即想让别人得到这个实例,又不想让别人修改
+		/// </summary>
+		/// <returns></returns>
+		virtual void* GetNativeWindow() const = 0;
+
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
 
