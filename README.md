@@ -6,7 +6,9 @@ Cherno系列手记
 ## 学习进展
 
 1-22(ImGui集成完毕!):  
-![](Picture/ImGui集成完毕.jpg)
+![](Picture/ImGui集成完毕.jpg)  
+
+1-23(ImGui接入glfw事件系统`)
 
 ## 依赖库
 
