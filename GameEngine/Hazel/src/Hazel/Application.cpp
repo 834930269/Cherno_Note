@@ -22,6 +22,9 @@ namespace Hazel {
 		//WindowsWindow在实例化时向glfw层注册了很多回调函数
 		//这些回调函数最终会走到Application的Event中来
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application() {
@@ -48,6 +51,12 @@ namespace Hazel {
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
 			}
+
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack) {
+				layer->OnImGuiRender();
+			}
+			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
 		}
