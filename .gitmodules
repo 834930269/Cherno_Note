@@ -4,3 +4,6 @@
 [submodule "GameEngine/Hazel/vendor/imgui"]
 	path = GameEngine/Hazel/vendor/imgui
 	url = https://github.com/TheCherno/imgui.git
+[submodule "GameEngine/Hazel/vendor/glm"]
+	path = GameEngine/Hazel/vendor/glm
+	url = https://github.com/g-truc/glm

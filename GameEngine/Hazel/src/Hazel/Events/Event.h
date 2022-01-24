@@ -5,6 +5,7 @@
 #include <string>
 #include <functional>
 #include <sstream>
+#include <glm/ext/matrix_float4x4.hpp>
 
 namespace Hazel {
 	/// <summary>
@@ -81,5 +82,4 @@ namespace Hazel {
 	inline std::ostream& operator<<(std::ostream& os, const Event& e) {
 		return os << e.ToString();
 	}
-
 }
