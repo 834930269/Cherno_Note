@@ -1,1 +1,22 @@
-﻿  GLFW.vcxproj -> C:\G\GithubRepo\Cherno_Note\GameEngine\Hazel\vendor\GLFW\bin\Debug-windows-x86_64\GLFW\GLFW.lib
+﻿cl : 命令行 warning D9002: 忽略未知选项“-std=c11”
+cl : 命令行 warning D9002: 忽略未知选项“-lgdi32”
+  context.c
+  egl_context.c
+  init.c
+  input.c
+  monitor.c
+  osmesa_context.c
+  vulkan.c
+  wgl_context.c
+  win32_init.c
+  win32_joystick.c
+  win32_monitor.c
+  win32_thread.c
+  win32_time.c
+  win32_window.c
+C:\G\GithubRepo\Cherno_Note\GameEngine\Hazel\vendor\GLFW\src\win32_window.c(561,119): warning C4047: “函数”:“DWORD”与“void *”的间接级别不同
+C:\G\GithubRepo\Cherno_Note\GameEngine\Hazel\vendor\GLFW\src\win32_window.c(561,115): warning C4024: “AdjustWindowRectEx”: 形参和实参 4 的类型不同
+C:\G\GithubRepo\Cherno_Note\GameEngine\Hazel\vendor\GLFW\src\win32_window.c(571,45): warning C4013: “DwmExtendFrameIntoClientArea”未定义；假设外部返回 int
+  window.c
+  正在生成代码...
+  GLFW.vcxproj -> C:\G\GithubRepo\Cherno_Note\GameEngine\Hazel\vendor\GLFW\bin\Debug-windows-x86_64\GLFW\GLFW.lib
