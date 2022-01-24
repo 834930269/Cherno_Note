@@ -1,5 +1,6 @@
 #include<Hazel.h>
 
+#include "imgui/imgui.h"
 
 class ExampleLayer :public Hazel::Layer {
 public:
@@ -9,6 +10,13 @@ public:
 	void OnUpdate() override {
 
 	}
+
+	virtual void OnImGuiRender() override {
+		ImGui::Begin("Test");
+		ImGui::Text("Test");
+		ImGui::End();
+	}
+
 	void OnEvent(Hazel::Event& event) override {
 		if (event.GetEventType() == Hazel::EventType::KeyPressed) {
 			Hazel::KeyPressedEvent& e = (Hazel::KeyPressedEvent&)event;

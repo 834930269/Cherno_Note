@@ -41,3 +41,7 @@ https://github.com/TheCherno/imgui
 注意: 有可能第一次编译会报`MSB3073`错误,别管他,再运行一次就可以了
 
 注意,如果要迁移平台,要在对应平台编写相应的`shell`
+
+## 资料收集
+
+https://blog.csdn.net/alexhu2010q/article/details/112465821

@@ -1,5 +1,6 @@
 workspace "Hazel"
     architecture "x64"
+    startproject "Sandbox"
 
     configurations{
         "Debug",
@@ -24,6 +25,7 @@ project "Hazel"
     location "Hazel"
     kind "SharedLib"
     language "C++"
+    staticruntime "off"
 
     targetdir ("bin/"..outputdir.."/%{prj.name}")
     objdir ("bin-init/"..outputdir.."/%{prj.name}")
@@ -48,6 +50,11 @@ project "Hazel"
         "%{IncludeDir.glm}",
     }
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
     links 
 	{ 
 		"GLFW",
@@ -58,7 +65,7 @@ project "Hazel"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
+        --staticruntime "On"
         systemversion "latest"
 
         --宏
@@ -75,24 +82,25 @@ project "Hazel"
     
     filter "configurations:Debug"
         defines "HZ_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "HZ_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         symbols "On"
 
     filter "configurations:Dist"
         defines "HZ_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         symbols "On"
     
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
-    staticruntime "off"
+    cppdialect "C++17"
+	staticruntime "off"
 
     
     targetdir ("bin/"..outputdir.."/%{prj.name}")
@@ -106,11 +114,12 @@ project "Sandbox"
     includedirs{
         "Hazel/vendor/spdlog/include",
         "Hazel/src",
+        "Hazel/vendor",
         "%{IncludeDir.glm}",
     }
 
     links{
-        "Hazel"
+        "Hazel",
     }
 
     filter "system:windows"
@@ -124,15 +133,15 @@ project "Sandbox"
     
     filter "configurations:Debug"
         defines "HZ_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "HZ_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         symbols "On"
 
     filter "configurations:Dist"
         defines "HZ_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         symbols "On"
