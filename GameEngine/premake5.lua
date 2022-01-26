@@ -23,9 +23,11 @@ include "Hazel/vendor/imgui"
 
 project "Hazel"
     location "Hazel"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
-    staticruntime "off"
+    cppdialect "C++17"
+    staticruntime "on"
+
 
     targetdir ("bin/"..outputdir.."/%{prj.name}")
     objdir ("bin-init/"..outputdir.."/%{prj.name}")
@@ -64,8 +66,6 @@ project "Hazel"
 	}
 
     filter "system:windows"
-        cppdialect "C++17"
-        --staticruntime "On"
         systemversion "latest"
 
         --宏
@@ -75,32 +75,27 @@ project "Hazel"
             "GLFW_INCLUDE_NONE"
         }
 
-        --将dll从HazelEngine移到Sandbox中
-        postbuildcommands{
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/"..outputdir.."/Sandbox")
-        }
-    
     filter "configurations:Debug"
         defines "HZ_DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "HZ_RELEASE"
         runtime "Release"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Dist"
         defines "HZ_DIST"
         runtime "Release"
-        symbols "On"
+        symbols "on"
     
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++17"
-	staticruntime "off"
+	staticruntime "on"
 
     
     targetdir ("bin/"..outputdir.."/%{prj.name}")
@@ -123,7 +118,6 @@ project "Sandbox"
     }
 
     filter "system:windows"
-        cppdialect "C++17"
         systemversion "latest"
 
         --宏
@@ -134,14 +128,14 @@ project "Sandbox"
     filter "configurations:Debug"
         defines "HZ_DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "HZ_RELEASE"
         runtime "Release"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Dist"
         defines "HZ_DIST"
         runtime "Release"
-        symbols "On"
+        symbols "on"
