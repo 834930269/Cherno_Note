@@ -1,17 +1,22 @@
 # Cherno_Note
-Cherno系列手记
-
+Cherno系列手记  
 课程地址: https://www.bilibili.com/video/BV1KE41117BD?p=4&spm_id_from=pageDriver
+
+# 计划
+本仓库暂时计划开两个分支,当项目足够可以开始学习OpenGL时直接开启分支进入OpenGL的学习  
+
+以及主干会持续跟着Cherno的课程进行搭建(有可能中间会花部分时间去学习OpenGL而不更新主干分支)
 
 ## 学习进展
 
-1-22(ImGui集成完毕!):  
+(ImGui集成完毕!):  
 ![](Picture/ImGui集成完毕.jpg)  
 
-1-23(ImGui接入glfw事件系统`)  
-1-24(ImGui接入Docking模式(类VS)):  
+(ImGui接入Docking模式(类VS)):  
 ![](Picture/ImGui切换成dock模式.jpg)
 
+OpenGL绘制第一个三角形:  
+![](Picture/OpenGL_第一个三角形.jpg)
 
 
 ## 依赖库

@@ -4,6 +4,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Hazel/Renderer/GraphicsContext.h"
+
 namespace Hazel {
 	/// <summary>
 	/// Windows操作系统下的窗口接口
@@ -30,6 +32,7 @@ namespace Hazel {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 		/// <summary>
 		/// 运行时实际的数据
 		/// </summary>
