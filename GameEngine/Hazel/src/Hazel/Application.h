@@ -7,6 +7,9 @@
 #include "Events/ApplicationEvents.h"
 #include "Hazel/ImGui/ImGuiLayer.h"
 
+#include "Hazel/Renderer/Shader.h"
+#include <Hazel/Renderer/Buffer.h>
+
 namespace Hazel
 {
 	//使用HAZEL_API宏代替dllimport和dllexport可以增加代码的复用性
@@ -37,7 +40,10 @@ namespace Hazel
 		LayerStack m_LayerStack;
 		static Application* s_Instance;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		unsigned int m_VertexArray;
+		std::unique_ptr<Shader> m_Shader;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 	};
 
 	//应该由客户端定义
