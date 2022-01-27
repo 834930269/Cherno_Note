@@ -5,6 +5,9 @@ Cherno系列手记
 # 计划
 本仓库暂时计划开两个分支,当项目足够可以开始学习OpenGL时直接开启分支进入OpenGL的学习  
 
+**后续暂时更新主要集中在这个分支(学习OpenGL)**  
+https://github.com/834930269/Cherno_Note/tree/LearnOpenGL
+
 以及主干会持续跟着Cherno的课程进行搭建(有可能中间会花部分时间去学习OpenGL而不更新主干分支)
 
 ## 学习进展
