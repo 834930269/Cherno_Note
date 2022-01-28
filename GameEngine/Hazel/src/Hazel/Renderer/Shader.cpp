@@ -4,8 +4,34 @@
 #include <glad/glad.h>
 
 namespace Hazel {
-	Shader::Shader(const std::string& vertexSrc, const std::string& fragmentSrc)
+	Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath)
 	{
+		// 1. 从文件路径中获取顶点/片段着色器
+		std::string vertexSrc;
+		std::string fragmentSrc;
+		std::ifstream vShaderFile;
+		std::ifstream fShaderFile;
+		//保证ifStream对象可以抛出异常
+		vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+		fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+		try {
+			vShaderFile.open(vertexPath);
+			fShaderFile.open(fragmentPath);
+			std::stringstream vShaderStream, fShaderStream;
+			//读取文件中的数据到数据流中
+			vShaderStream << vShaderFile.rdbuf();
+			fShaderStream << fShaderFile.rdbuf();
+			// 关闭文件处理器
+			vShaderFile.close();
+			fShaderFile.close();
+			// 转换数据流到string
+			vertexSrc = vShaderStream.str();
+			fragmentSrc = fShaderStream.str();
+		}
+		catch (std::ifstream::failure e) {
+			std::cout << "ERROR::SHADER::文件读取失败 "<< std::endl;
+		}
+
 		//创建一个空的vertexShader句柄
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 		
@@ -108,5 +134,17 @@ namespace Hazel {
 	void Shader::UnBind() const
 	{
 		glUseProgram(0);
+	}
+	void Shader::setBool(const std::string& name, bool value) const
+	{
+		glUniform1i(glGetUniformLocation(m_RendererID, name.c_str()), (int)value);
+	}
+	void Shader::setInt(const std::string& name, int value) const
+	{
+		glUniform1i(glGetUniformLocation(m_RendererID, name.c_str()), value);
+	}
+	void Shader::setFloat(const std::string& name, float value) const
+	{
+		glUniform1f(glGetUniformLocation(m_RendererID, name.c_str()), value);
 	}
 }

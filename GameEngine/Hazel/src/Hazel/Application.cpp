@@ -43,30 +43,7 @@ namespace Hazel {
 		uint32_t indices[3] = { 0,1,2 };
 		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices)/sizeof(uint32_t)));
 
-		std::string vertexSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 a_Position;
-			
-			out vec3 v_Position;
-
-			void main(){
-				v_Position = a_Position;
-				gl_Position = vec4(a_Position,1.0);
-			}
-		)";
-
-		std::string fragmentSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 color;
-			in vec3 v_Position;
-			void main(){
-				color = vec4(v_Position,1.0)*0.5+0.5;
-			}
-		)";
-
-		m_Shader.reset(new Shader(vertexSrc,fragmentSrc));
+		m_Shader.reset(new Shader("ShaderSource/Chapter1/vertex.vs","ShaderSource/Chapter1/fragment.fs"));
 
 	}
 
@@ -88,11 +65,12 @@ namespace Hazel {
 
 		while (m_Running)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
+			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			m_Shader->Bind();
 			glBindVertexArray(m_VertexArray);
+			//表明我们想要绘制的是三角
 			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			for (Layer* layer : m_LayerStack) {
