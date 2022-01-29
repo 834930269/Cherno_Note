@@ -12,8 +12,8 @@ namespace Hazel {
 #define BIND_EVENT_FN(x) std::bind(&Application::x,this,std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
-
 	Application::Application() {
+		m_TextureDict.clear();
 		HZ_CORE_ASSERT(!s_Instance,"Application全局应该只有一个,但这里不为空.")
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
@@ -29,22 +29,40 @@ namespace Hazel {
 		glGenVertexArrays(1, &m_VertexArray);
 		glBindVertexArray(m_VertexArray);
 
-		float vertices[3 * 3] = {
-			-0.5f,-0.5f,0.0f,
-			0.5f,-0.5f,0.0f,
-			0.0f,0.5f,0.0f
+		float vertices[] = {
+			 // 顶点              // 颜色             // UV坐标
+			 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
+			 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
+			-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
+			-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // top left 
 		};
 
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
+		// position attribute
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3*sizeof(float),nullptr);
+		// color attribute
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+		glEnableVertexAttribArray(1);
+		// texture coord attribute
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+		glEnableVertexAttribArray(2);
 
-		uint32_t indices[3] = { 0,1,2 };
+		uint32_t indices[2*3] = { 
+			0, 1, 3, // first triangle
+			1, 2, 3  // second triangle
+		};
 		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices)/sizeof(uint32_t)));
 
-		m_Shader.reset(new Shader("ShaderSource/Chapter1/vertex.vs","ShaderSource/Chapter1/fragment.fs"));
+		CreateTexture("ShaderSource/static/container.jpg",true);
+		CreateTexture("ShaderSource/static/awesomeface.png",false);
 
+		m_Shader.reset(new Shader("ShaderSource/Chapter1/vertex.vs","ShaderSource/Chapter1/fragment.fs"));
+		m_Shader->Bind();
+		//index和texture映射起来
+		m_Shader->setInt("texture1", 0);
+		m_Shader->setInt("texture2", 1);
 	}
 
 	Application::~Application() {
@@ -61,12 +79,41 @@ namespace Hazel {
 		layer->OnAttach();
 	}
 
+	uint32_t Application::CreateTexture(const std::string& path,bool isRGB= true)
+	{
+		Texture* texture = GetTexture(path);
+		if (texture == nullptr) {
+			texture = new Texture(path,isRGB);
+			m_TextureDict.insert({path, texture });
+		}
+		return texture->GetID();
+	}
+
+	Texture* Application::GetTexture(const std::string& path) const
+	{
+		auto iter = m_TextureDict.find(path);
+		if (iter == m_TextureDict.end()) {
+			return nullptr;
+		}
+		return iter->second;
+	}
+
 	void Application::Run() {
 
 		while (m_Running)
 		{
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			// bind Texture
+			if (GetTexture("ShaderSource/static/container.jpg")) {
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, GetTexture("ShaderSource/static/container.jpg")->GetID());
+			}
+			if (GetTexture("ShaderSource/static/awesomeface.png")) {
+				glActiveTexture(GL_TEXTURE1);
+				glBindTexture(GL_TEXTURE_2D, GetTexture("ShaderSource/static/awesomeface.png")->GetID());
+			}
 
 			m_Shader->Bind();
 			glBindVertexArray(m_VertexArray);

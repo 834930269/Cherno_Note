@@ -9,6 +9,7 @@
 
 #include "Hazel/Renderer/Shader.h"
 #include <Hazel/Renderer/Buffer.h>
+#include <Hazel/Renderer/Texture.h>
 
 namespace Hazel
 {
@@ -29,6 +30,11 @@ namespace Hazel
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 #pragma endregion
+
+#pragma region Texture相关
+		uint32_t CreateTexture(const std::string& path,bool isRGB);
+		Texture* GetTexture(const std::string& path) const;
+#pragma endregion
 		inline static Application& Get() { return *s_Instance; }
 		inline Window& GetWindow() { return *m_Window; }
 	private:
@@ -40,10 +46,11 @@ namespace Hazel
 		LayerStack m_LayerStack;
 		static Application* s_Instance;
 
-		unsigned int m_VertexArray;
+		unsigned int m_VertexArray;//VAO
 		std::unique_ptr<Shader> m_Shader;
 		std::unique_ptr<VertexBuffer> m_VertexBuffer;
 		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::unordered_map<std::string,Texture*> m_TextureDict;
 	};
 
 	//应该由客户端定义
