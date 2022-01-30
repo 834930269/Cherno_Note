@@ -147,4 +147,8 @@ namespace Hazel {
 	{
 		glUniform1f(glGetUniformLocation(m_RendererID, name.c_str()), value);
 	}
+	uint32_t Shader::GetID() const
+	{
+		return m_RendererID;
+	}
 }

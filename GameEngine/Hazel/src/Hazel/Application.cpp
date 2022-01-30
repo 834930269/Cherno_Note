@@ -6,6 +6,9 @@
 #include "Hazel/Input.h"
 
 #include <Glad/glad.h>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <GLFW/glfw3.h>
 
 namespace Hazel {
 
@@ -58,7 +61,7 @@ namespace Hazel {
 		CreateTexture("ShaderSource/static/container.jpg",true);
 		CreateTexture("ShaderSource/static/awesomeface.png",false);
 
-		m_Shader.reset(new Shader("ShaderSource/Chapter1/vertex.vs","ShaderSource/Chapter1/fragment.fs"));
+		m_Shader.reset(new Shader("ShaderSource/Chapter2/vertex.vs","ShaderSource/Chapter2/fragment.fs"));
 		m_Shader->Bind();
 		//index和texture映射起来
 		m_Shader->setInt("texture1", 0);
@@ -115,7 +118,17 @@ namespace Hazel {
 				glBindTexture(GL_TEXTURE_2D, GetTexture("ShaderSource/static/awesomeface.png")->GetID());
 			}
 
+			// create transformations
+			glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+			transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
+			transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+
 			m_Shader->Bind();
+
+			//先找到uniform地址
+			unsigned int transformLoc = glGetUniformLocation(m_Shader->GetID(), "transform");
+			glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+
 			glBindVertexArray(m_VertexArray);
 			//表明我们想要绘制的是三角
 			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
