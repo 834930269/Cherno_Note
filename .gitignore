@@ -6,3 +6,5 @@ GameEngine/bin-init/
 .users
 
 DirectX12/DirectX12/.vs/
+DirectX12/DirectX12/x64/
+DirectX12/DirectX12/Debug/
