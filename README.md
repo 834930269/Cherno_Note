@@ -11,7 +11,7 @@
 不同的分支代表的是不同的路径  
 中间可能会间断的学习不同的知识  
 当前主分支是用来学习软渲染的  
-学习的目标仓库在这:  https://github.com/ssloy/tinyraytracer/wiki/Part-1:-understandable-raytracing
+学习的目标仓库在这:  https://github.com/ssloy/tinyrenderer/wiki
 
 DirectX12: https://github.com/834930269/Graphics_Note/tree/DirectX12  
 LearnOpenGL: https://github.com/834930269/Graphics_Note/tree/LearnOpenGL  
