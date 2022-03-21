@@ -1,55 +1,22 @@
-# Cherno_Note
-Cherno系列手记  
-课程地址: https://www.bilibili.com/video/BV1KE41117BD?p=4&spm_id_from=pageDriver
+# 渲染学习手记
 
-# 计划
-本仓库暂时计划开两个分支,当项目足够可以开始学习OpenGL时直接开启分支进入OpenGL的学习  
+## 软渲染  
+软渲染是使用CPU来模拟GPU渲染流水线的渲染器  
 
-**后续暂时更新主要集中在这个分支(学习OpenGL)**  
-https://github.com/834930269/Cherno_Note/tree/LearnOpenGL
+唯一用到的GPU是DrawPixel()函数
 
-以及主干会持续跟着Cherno的课程进行搭建(有可能中间会花部分时间去学习OpenGL而不更新主干分支)
+## 介绍 
 
-## 学习进展
+这个仓库是冬狼用来学习渲染知识的一个仓库  
+不同的分支代表的是不同的路径  
+中间可能会间断的学习不同的知识  
+当前主分支是用来学习软渲染的  
+学习的目标仓库在这:  https://github.com/ssloy/tinyraytracer/wiki/Part-1:-understandable-raytracing
 
-(ImGui集成完毕!):  
-![](Picture/ImGui集成完毕.jpg)  
-
-(ImGui接入Docking模式(类VS)):  
-![](Picture/ImGui切换成dock模式.jpg)
-
-OpenGL绘制第一个三角形:  
-![](Picture/OpenGL_第一个三角形.jpg)
+DirectX12: https://github.com/834930269/Graphics_Note/tree/DirectX12  
+LearnOpenGL: https://github.com/834930269/Graphics_Note/tree/LearnOpenGL  
+Cherno的游戏引擎系列: https://github.com/834930269/Graphics_Note/tree/main  
+tinyraytracer(软渲染): https://github.com/834930269/Graphics_Note/tree/SoftRenderer
 
 
-## 依赖库
 
-日志(spdlog):  
-https://github.com/gabime/spdlog
-
-编译(premake):  
-https://github.com/premake/premake-core/releases
- 
-跨平台窗口(GLFW[实现的一个OpenGL接口封装库] - 不支持DirectX,后面可能会改):  
-https://github.com/TheCherno/glfw
-
-GLAD(OpenGL接口函数整理(只是胶水)):  
-https://glad.dav1d.de/
-
-ImGui(图形化UI界面):  
-https://github.com/TheCherno/imgui
-
-## 项目启动流程
-
-先进入`GameEngine`目录  
-
-点击`GenerateProject.bat`  
-主要流程是,先编写`premake5.lua`脚本,然后借助`premake`编译生成对应平台的项目工程  
-然后Windows可以用VS打开`HazelEngine.sln`,直接运行即可  
-注意: 有可能第一次编译会报`MSB3073`错误,别管他,再运行一次就可以了
-
-注意,如果要迁移平台,要在对应平台编写相应的`shell`
-
-## 资料收集
-
-https://blog.csdn.net/alexhu2010q/article/details/112465821
