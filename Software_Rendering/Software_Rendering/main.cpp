@@ -127,5 +127,6 @@ int main(int argc, char** argv) {
 
     //释放model
     delete model;
+    delete[]zbuffer;
 	return 0;
 }
