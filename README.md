@@ -1,9 +1,15 @@
 # 渲染学习手记
 
-## 软渲染  
+## 软光栅(tinyrenderer完结)
+
+两种方法,一种方法是使用OpenGl一类的库只使用DrawPixel  
 软渲染是使用CPU来模拟GPU渲染流水线的渲染器  
 
 唯一用到的GPU是DrawPixel()函数
+
+另一种方法是只保存渲染后的结果,保存到一张图片中,tinyrenderer使用的是TGA图片格式  
+
+![](笔记/Picture/10-1.jpg)
 
 ## 介绍 
 
@@ -16,7 +22,7 @@
 DirectX12: https://github.com/834930269/Graphics_Note/tree/DirectX12  
 LearnOpenGL: https://github.com/834930269/Graphics_Note/tree/LearnOpenGL  
 Cherno的游戏引擎系列: https://github.com/834930269/Graphics_Note/tree/main  
-tinyraytracer(软渲染): https://github.com/834930269/Graphics_Note/tree/SoftRenderer
+tinyrenderer(软光栅): https://github.com/834930269/Graphics_Note/tree/SoftRenderer
 
 
 

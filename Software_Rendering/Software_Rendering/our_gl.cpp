@@ -53,7 +53,7 @@ Vec3f barycentric(Vec2f A, Vec2f B, Vec2f C, Vec2f P) {
     return Vec3f(1.f - (u.x + u.y) / u.z, u.y / u.z, u.x / u.z);
 }
 
-void triangle(Vec4f* pts, IShader& shader, TGAImage& image, TGAImage& zbuffer) {
+void triangle(Vec4f* pts, IShader& shader, TGAImage& image, float* zbuffer) {
     Vec2f bboxmin(std::numeric_limits<float>::max(), std::numeric_limits<float>::max());
     Vec2f bboxmax(-std::numeric_limits<float>::max(), -std::numeric_limits<float>::max());
     for (int i = 0; i < 3; i++) {
@@ -70,10 +70,10 @@ void triangle(Vec4f* pts, IShader& shader, TGAImage& image, TGAImage& zbuffer) {
             float z = pts[0][2] * c.x + pts[1][2] * c.y + pts[2][2] * c.z;//根据重心坐标计算当前像素的z
             float w = pts[0][3] * c.x + pts[1][3] * c.y + pts[2][3] * c.z;//根据重心坐标计算当前像素的w
             int frag_depth = std::max(0, std::min(255, int(z / w + .5)));//深度,zbuffer
-            if (c.x < 0 || c.y < 0 || c.z<0 || zbuffer.get(P.x, P.y)[0]>frag_depth) continue;
+            if (c.x < 0 || c.y < 0 || c.z<0 || zbuffer[P.x + P.y * image.get_width()]>frag_depth) continue;
             bool discard = shader.fragment(c, color);//是否丢弃
             if (!discard) {
-                zbuffer.set(P.x, P.y, TGAColor(frag_depth));
+                zbuffer[P.x + P.y * image.get_width()] = frag_depth;
                 image.set(P.x, P.y, color);
             }
         }
