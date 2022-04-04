@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8CAFB9BC-01B2-34FC-A81F-8DFA5CD3D1F0}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+C:\Software\Cmake\bin\cmake.exe -SC:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master -BC:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master/build --check-stamp-file C:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeCCompiler.cmake;C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeCXXCompiler.cmake;C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeRCCompiler.cmake;C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeSystem.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCCompiler.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCCompilerABI.c;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCXXCompiler.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCXXCompilerABI.cpp;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCompilerIdDetection.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCXXCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompileFeatures.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompilerABI.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompilerId.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineRCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineSystem.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeFindBinUtils.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeParseLibraryArchitecture.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeRCCompiler.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeSystem.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestCXXCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestCompilerCommon.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestRCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\MSVC-C.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ROCMClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CompilerId\VS-10.vcxproj.in;C:\Software\Cmake\share\cmake-3.21\Modules\Internal\FeatureTesting.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-Determine-CXX.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-MSVC-C.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\Software\Cmake\bin\cmake.exe -SC:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master -BC:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master/build --check-stamp-file C:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeCCompiler.cmake;C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeCXXCompiler.cmake;C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeRCCompiler.cmake;C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeSystem.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCCompiler.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCCompilerABI.c;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCXXCompiler.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCXXCompilerABI.cpp;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCompilerIdDetection.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCXXCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompileFeatures.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompilerABI.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompilerId.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineRCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineSystem.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeFindBinUtils.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeParseLibraryArchitecture.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeRCCompiler.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeSystem.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestCXXCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestCompilerCommon.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestRCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\MSVC-C.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ROCMClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CompilerId\VS-10.vcxproj.in;C:\Software\Cmake\share\cmake-3.21\Modules\Internal\FeatureTesting.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-Determine-CXX.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-MSVC-C.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\Software\Cmake\bin\cmake.exe -SC:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master -BC:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master/build --check-stamp-file C:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeCCompiler.cmake;C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeCXXCompiler.cmake;C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeRCCompiler.cmake;C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeSystem.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCCompiler.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCCompilerABI.c;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCXXCompiler.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCXXCompilerABI.cpp;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCompilerIdDetection.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCXXCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompileFeatures.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompilerABI.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompilerId.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineRCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineSystem.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeFindBinUtils.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeParseLibraryArchitecture.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeRCCompiler.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeSystem.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestCXXCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestCompilerCommon.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestRCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\MSVC-C.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ROCMClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CompilerId\VS-10.vcxproj.in;C:\Software\Cmake\share\cmake-3.21\Modules\Internal\FeatureTesting.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-Determine-CXX.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-MSVC-C.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\Software\Cmake\bin\cmake.exe -SC:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master -BC:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master/build --check-stamp-file C:/G/GithubRepo/Cherno_Note/Games101/Games101-Homework-Win-master/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeCCompiler.cmake;C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeCXXCompiler.cmake;C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeRCCompiler.cmake;C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3.21.0-rc2\CMakeSystem.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCCompiler.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCCompilerABI.c;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCXXCompiler.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCXXCompilerABI.cpp;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeCompilerIdDetection.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCXXCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompileFeatures.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompilerABI.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineCompilerId.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineRCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeDetermineSystem.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeFindBinUtils.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeParseLibraryArchitecture.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeRCCompiler.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeSystem.cmake.in;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestCXXCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestCompilerCommon.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CMakeTestRCCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\MSVC-C.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\ROCMClang-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\CompilerId\VS-10.vcxproj.in;C:\Software\Cmake\share\cmake-3.21\Modules\Internal\FeatureTesting.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-Determine-CXX.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-MSVC-C.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Software\Cmake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\ZERO_CHECK.vcxproj">
+      <Project>{CEDE559F-FE53-3E9F-A64C-3AFF9FAD71A9}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\Assignment4\BezierCurve.vcxproj">
+      <Project>{866A94F0-29C8-3C3A-ACC0-DB3E2E19CA10}</Project>
+      <Name>BezierCurve</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\Assignment8\CGL\src\CGL.vcxproj">
+      <Project>{A47711CA-62DB-326F-A93A-1492354FD770}</Project>
+      <Name>CGL</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\Assignment1\Rasterizer1.vcxproj">
+      <Project>{0A9BC173-41D4-358E-8972-4D1DA023DB14}</Project>
+      <Name>Rasterizer1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\Assignment2\Rasterizer2.vcxproj">
+      <Project>{311629A7-C6D3-3B86-ABD0-814053B98429}</Project>
+      <Name>Rasterizer2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\Assignment3\Rasterizer3.vcxproj">
+      <Project>{285D704F-4421-32CA-8A55-DB69EFF83CB4}</Project>
+      <Name>Rasterizer3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\Assignment5\RayTracing1.vcxproj">
+      <Project>{19BBF4E4-511C-3AF9-83E8-32FE39F6B910}</Project>
+      <Name>RayTracing1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\Assignment6\RayTracing2.vcxproj">
+      <Project>{5A26CF77-46DB-3E40-B1D9-B623C21A6B2B}</Project>
+      <Name>RayTracing2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\Assignment7\RayTracing3.vcxproj">
+      <Project>{1A0FF8DC-CB76-38FF-A3A2-BD763B03C882}</Project>
+      <Name>RayTracing3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\Assignment0\Transformation.vcxproj">
+      <Project>{F2050328-D29D-3D69-BCF8-3CC92641B513}</Project>
+      <Name>Transformation</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\freetype\freetype.vcxproj">
+      <Project>{8322A9B6-0A93-3A96-8A32-97FB33B3EC8B}</Project>
+      <Name>freetype</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\Assignment8\CGL\deps\glew\glew.vcxproj">
+      <Project>{0AEBB4A4-44BC-3687-BAAB-EE8D5C46C9A4}</Project>
+      <Name>glew</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\Assignment8\CGL\deps\glfw\src\glfw.vcxproj">
+      <Project>{15DA340D-86B9-3F44-BEDE-B427450DE377}</Project>
+      <Name>glfw</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\Assignment8\src\ropesim.vcxproj">
+      <Project>{B88ACD23-1AFE-3810-863E-8C7F853E8D15}</Project>
+      <Name>ropesim</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

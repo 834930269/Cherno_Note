@@ -7,3 +7,10 @@ GameEngine/bin-init/
 
 Software_Rendering/Software_Rendering/.vs/
 Software_Rendering/Software_Rendering/Debug/
+
+**/Debug/
+**/.vs/
+**/opencv/
+**/eigen3/
+**/freetype/
+**/CMakeFiles/

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\Assignment1\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\Assignment1\rasterizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\Assignment1\Triangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\Assignment1\rasterizer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\Assignment1\Triangle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\Assignment1\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5B909406-6B42-31FF-BD7B-D506154675FF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9E7FA810-44AC-3DE2-9665-C40A9D87C888}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

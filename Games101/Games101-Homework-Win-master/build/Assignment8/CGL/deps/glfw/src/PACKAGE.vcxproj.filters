@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\G\GithubRepo\Cherno_Note\Games101\Games101-Homework-Win-master\build\CMakeFiles\3f0c3eefe80a60618e3d8ecc5b101258\PACKAGE_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{191AF4F6-322F-38EC-9813-FD4B4162FDAD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
