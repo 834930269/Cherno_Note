@@ -77,6 +77,7 @@ int D3DApp::Run()
 
 	while(msg.message != WM_QUIT)
 	{
+		//如果有窗口消息就
 		// If there are Window messages then process them.
 		if(PeekMessage( &msg, 0, 0, 0, PM_REMOVE ))
 		{
@@ -84,8 +85,10 @@ int D3DApp::Run()
             DispatchMessage( &msg );
 		}
 		// Otherwise, do animation/game stuff.
+		//执行动画与游戏相关逻辑
 		else
         {	
+			//记录当前帧时间
 			mTimer.Tick();
 
 			if( !mAppPaused )
@@ -118,22 +121,31 @@ bool D3DApp::Initialize()
 	return true;
 }
  
+/// <summary>
+/// 创建描述符堆
+/// 描述符: 用于描述资源的句柄
+/// 实际的描述符堆时存放在GPU中的
+/// 但是描述符并非实际的资源
+/// </summary>
 void D3DApp::CreateRtvAndDsvDescriptorHeaps()
 {
+	//用于存放渲染数据的缓冲区资源(Render Targte View)
     D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc;
     rtvHeapDesc.NumDescriptors = SwapChainBufferCount;
     rtvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
     rtvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
 	rtvHeapDesc.NodeMask = 0;
+	//创建描述符堆
     ThrowIfFailed(md3dDevice->CreateDescriptorHeap(
         &rtvHeapDesc, IID_PPV_ARGS(mRtvHeap.GetAddressOf())));
 
-
+	//用于存放深度/模板视图(Depth/Stencil View)
     D3D12_DESCRIPTOR_HEAP_DESC dsvHeapDesc;
     dsvHeapDesc.NumDescriptors = 1;
     dsvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_DSV;
     dsvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
 	dsvHeapDesc.NodeMask = 0;
+	//创建描述符堆
     ThrowIfFailed(md3dDevice->CreateDescriptorHeap(
         &dsvHeapDesc, IID_PPV_ARGS(mDsvHeap.GetAddressOf())));
 }
@@ -197,6 +209,7 @@ void D3DApp::OnResize()
     optClear.DepthStencil.Depth = 1.0f;
     optClear.DepthStencil.Stencil = 0;
 	CD3DX12_HEAP_PROPERTIES type = CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_DEFAULT);
+	//创建深度/模板缓冲区资源
     ThrowIfFailed(md3dDevice->CreateCommittedResource(
         &type,
 		D3D12_HEAP_FLAG_NONE,
@@ -425,13 +438,13 @@ bool D3DApp::InitDirect3D()
 
 	ThrowIfFailed(CreateDXGIFactory1(IID_PPV_ARGS(&mdxgiFactory)));
 
-	// Try to create hardware device.
+	// 尝试创建硬件句柄(显示适配器)
 	HRESULT hardwareResult = D3D12CreateDevice(
-		nullptr,             // default adapter
+		nullptr,             // 为空的话使用default adapter
 		D3D_FEATURE_LEVEL_11_0,
-		IID_PPV_ARGS(&md3dDevice));
+		IID_PPV_ARGS(&md3dDevice));//IID_PPV_ARGS 包含两个结果,一个是REFIID类型的riid,另一个是void**类型的指针
 
-	// Fallback to WARP device.
+	// 回退至WARP设备。Fallback to WARP device.
 	if(FAILED(hardwareResult))
 	{
 		ComPtr<IDXGIAdapter> pWarpAdapter;
@@ -442,10 +455,11 @@ bool D3DApp::InitDirect3D()
 			D3D_FEATURE_LEVEL_11_0,
 			IID_PPV_ARGS(&md3dDevice)));
 	}
-
+	//创建围栏(Fence)
 	ThrowIfFailed(md3dDevice->CreateFence(0, D3D12_FENCE_FLAG_NONE,
 		IID_PPV_ARGS(&mFence)));
 
+	//缓存围栏描述符大小
 	mRtvDescriptorSize = md3dDevice->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
 	mDsvDescriptorSize = md3dDevice->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_DSV);
 	mCbvSrvUavDescriptorSize = md3dDevice->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
@@ -453,10 +467,10 @@ bool D3DApp::InitDirect3D()
     // Check 4X MSAA quality support for our back buffer format.
     // All Direct3D 11 capable devices support 4X MSAA for all render 
     // target formats, so we only need to check quality support.
-
+	//检查对4x MSAA的支持
 	D3D12_FEATURE_DATA_MULTISAMPLE_QUALITY_LEVELS msQualityLevels;
 	msQualityLevels.Format = mBackBufferFormat;
-	msQualityLevels.SampleCount = 4;
+	msQualityLevels.SampleCount = 4;//采样数
 	msQualityLevels.Flags = D3D12_MULTISAMPLE_QUALITY_LEVELS_FLAG_NONE;
 	msQualityLevels.NumQualityLevels = 0;
 	ThrowIfFailed(md3dDevice->CheckFeatureSupport(
@@ -478,52 +492,63 @@ bool D3DApp::InitDirect3D()
 	return true;
 }
 
+/// <summary>
+/// 创建命令队列,命令分配器和命令列表
+/// </summary>
 void D3DApp::CreateCommandObjects()
 {
+	//创建命令队列
 	D3D12_COMMAND_QUEUE_DESC queueDesc = {};
 	queueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
 	queueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
 	ThrowIfFailed(md3dDevice->CreateCommandQueue(&queueDesc, IID_PPV_ARGS(&mCommandQueue)));
 
+	//创建命令分配器
 	ThrowIfFailed(md3dDevice->CreateCommandAllocator(
-		D3D12_COMMAND_LIST_TYPE_DIRECT,
-		IID_PPV_ARGS(mDirectCmdListAlloc.GetAddressOf())));
+		D3D12_COMMAND_LIST_TYPE_DIRECT,//直接分配器
+		IID_PPV_ARGS(mDirectCmdListAlloc.GetAddressOf())));//获取GPU的首地址
 
+	//创建命令列表
 	ThrowIfFailed(md3dDevice->CreateCommandList(
 		0,
 		D3D12_COMMAND_LIST_TYPE_DIRECT,
-		mDirectCmdListAlloc.Get(), // Associated command allocator
+		mDirectCmdListAlloc.Get(), // Associated command allocator//分配一个命令分配器
 		nullptr,                   // Initial PipelineStateObject
 		IID_PPV_ARGS(mCommandList.GetAddressOf())));
 
 	// Start off in a closed state.  This is because the first time we refer 
 	// to the command list we will Reset it, and it needs to be closed before
 	// calling Reset.
-	mCommandList->Close();
+	mCommandList->Close();//初始化的时候不需要添加命令,所以需要手动关闭一次,实际上是变成关闭状态
 }
 
+/// <summary>
+/// 创建交换链
+/// </summary>
 void D3DApp::CreateSwapChain()
 {
     // Release the previous swapchain we will be recreating.
     mSwapChain.Reset();
 
+	//创建交换链描述
     DXGI_SWAP_CHAIN_DESC sd;
-    sd.BufferDesc.Width = mClientWidth;
-    sd.BufferDesc.Height = mClientHeight;
-    sd.BufferDesc.RefreshRate.Numerator = 60;
-    sd.BufferDesc.RefreshRate.Denominator = 1;
+    sd.BufferDesc.Width = mClientWidth;//宽度
+	sd.BufferDesc.Height = mClientHeight;//高度
+    sd.BufferDesc.RefreshRate.Numerator = 60;//FPS
+    sd.BufferDesc.RefreshRate.Denominator = 1;//
     sd.BufferDesc.Format = mBackBufferFormat;
     sd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
     sd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
-    sd.SampleDesc.Count = m4xMsaaState ? 4 : 1;
+    sd.SampleDesc.Count = m4xMsaaState ? 4 : 1;//抗锯齿msaa等级
     sd.SampleDesc.Quality = m4xMsaaState ? (m4xMsaaQuality - 1) : 0;
     sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-    sd.BufferCount = SwapChainBufferCount;
-    sd.OutputWindow = mhMainWnd;
+    sd.BufferCount = SwapChainBufferCount;//交换链个数
+    sd.OutputWindow = mhMainWnd;//显示的窗口
     sd.Windowed = true;
 	sd.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
     sd.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 
+	//交换链需要通过命令队列进行刷新
 	// Note: Swap chain uses queue to perform flush.
     ThrowIfFailed(mdxgiFactory->CreateSwapChain(
 		mCommandQueue.Get(),

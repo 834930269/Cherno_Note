@@ -9,7 +9,7 @@
 #include <crtdbg.h>
 #endif
 
-#include "d3dUtil.h"
+#include "d3dUtil.h" 
 #include "GameTimer.h"
 
 // Link necessary d3d12 libraries.
@@ -24,6 +24,7 @@ protected:
     D3DApp(HINSTANCE hInstance);
     D3DApp(const D3DApp& rhs) = delete;
     D3DApp& operator=(const D3DApp& rhs) = delete;
+    //析构之前,必须等待GPU处理完队列中的数据
     virtual ~D3DApp();
 
 public:
@@ -47,7 +48,7 @@ protected:
 	virtual void OnResize(); 
 	virtual void Update(const GameTimer& gt)=0;
     virtual void Draw(const GameTimer& gt)=0;
-
+    //便于重写处理鼠标消息的虚函数
 	// Convenience overrides for handling mouse input.
 	virtual void OnMouseDown(WPARAM btnState, int x, int y){ }
 	virtual void OnMouseUp(WPARAM btnState, int x, int y)  { }
@@ -60,6 +61,7 @@ protected:
 	void CreateCommandObjects();
     void CreateSwapChain();
 
+    //强制CPU等待GPU,直到GPU处理完队列钟的命令
 	void FlushCommandQueue();
 
 	ID3D12Resource* CurrentBackBuffer()const;
@@ -76,19 +78,21 @@ protected:
 
     static D3DApp* mApp;
 
-    HINSTANCE mhAppInst = nullptr; // application instance handle
-    HWND      mhMainWnd = nullptr; // main window handle
-	bool      mAppPaused = false;  // is the application paused?
-	bool      mMinimized = false;  // is the application minimized?
-	bool      mMaximized = false;  // is the application maximized?
-	bool      mResizing = false;   // are the resize bars being dragged?
-    bool      mFullscreenState = false;// fullscreen enabled
+    HINSTANCE mhAppInst = nullptr; // 应用程序实例句柄
+    HWND      mhMainWnd = nullptr; // 主窗口句柄
+	bool      mAppPaused = false;  // 应用程序是否暂停
+	bool      mMinimized = false;  // 应用程序是否最小化
+	bool      mMaximized = false;  // 应用程序是否最大化
+	bool      mResizing = false;   // 是否收到拖拽
+    bool      mFullscreenState = false;// 是否开启全屏
 
+    //如果为true,则开始4xMSAA
 	// Set true to use 4X MSAA (?.1.8).  The default is false.
     bool      m4xMsaaState = false;    // 4X MSAA enabled
     UINT      m4xMsaaQuality = 0;      // quality level of 4X MSAA
 
 	// Used to keep track of the 揹elta-time?and game time (?.4).
+    //帧时间的记录
 	GameTimer mTimer;
 	
     Microsoft::WRL::ComPtr<IDXGIFactory4> mdxgiFactory;
@@ -102,8 +106,8 @@ protected:
     Microsoft::WRL::ComPtr<ID3D12CommandAllocator> mDirectCmdListAlloc;
     Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList> mCommandList;
 
-	static const int SwapChainBufferCount = 2;
-	int mCurrBackBuffer = 0;
+	static const int SwapChainBufferCount = 2;//交换链个数
+	int mCurrBackBuffer = 0;//记录当前前台缓冲区的索引
     Microsoft::WRL::ComPtr<ID3D12Resource> mSwapChainBuffer[SwapChainBufferCount];
     Microsoft::WRL::ComPtr<ID3D12Resource> mDepthStencilBuffer;
 
@@ -117,6 +121,7 @@ protected:
 	UINT mDsvDescriptorSize = 0;
 	UINT mCbvSrvUavDescriptorSize = 0;
 
+    //派生类中可以自定义的值
 	// Derived class should set these in derived constructor to customize starting values.
 	std::wstring mMainWndCaption = L"d3d App";
 	D3D_DRIVER_TYPE md3dDriverType = D3D_DRIVER_TYPE_HARDWARE;

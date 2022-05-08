@@ -5,6 +5,9 @@
 #ifndef GAMETIMER_H
 #define GAMETIMER_H
 
+/// <summary>
+/// ÓÎÏ·¼ÆÊ±Æ÷
+/// </summary>
 class GameTimer
 {
 public:
