@@ -1,8 +1,9 @@
-cbuffer cbPerObject : register(b0){
+cbuffer cbPerObject : register(b0)
+{
     float4x4 gWorldViewProj;
 };
 
-struct VerteIn{
+struct VertexIn{
     float3 PosL : POSITION;
     float4 Color : COLOR;
 };
@@ -12,7 +13,8 @@ struct VertexOut{
     float4 Color : COLOR;
 };
 
-VertexOut VS(VertexIn vin){
+VertexOut VS(VertexIn vin)
+{
     VertexOut vout;
 
     //转换到齐次裁剪空间

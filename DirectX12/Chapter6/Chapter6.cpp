@@ -176,6 +176,7 @@ void BoxApp::Draw(const GameTimer& gt) {
 		0, mCbvHeap->GetGPUDescriptorHandleForHeapStart()
 	);
 
+	//绘制命令
 	mCommandList->DrawIndexedInstanced(mBoxGeo->DrawArgs["box"].IndexCount, 1, 0, 0, 0);
 
 	//按照资源的用途指示其状态的转变,此处将资源从渲染目标状态转换为呈现态
@@ -207,6 +208,7 @@ void BoxApp::OnMouseUp(WPARAM btnState, int x, int y) {
 }
 
 void BoxApp::OnMouseMove(WPARAM btnState, int x, int y) {
+	//按下才可以
 	if ((btnState & MK_LBUTTON) != 0) {
 		//根据鼠标的移动距离计算旋转角度，并令每个像素都按此角度的1/4旋转
 		float dx = XMConvertToRadians(0.25f * static_cast<float>(x - mLastMousePos.x));
@@ -248,6 +250,10 @@ void BoxApp::BuildDescriptorHeaps()
 
 /// <summary>
 /// 构建常量堆
+/// Box实例中Shader只有一个
+/// float4x4 gWorldViewProj
+/// ObjectConstants里一样的内存布局
+/// XMFLOAT4X4 WorldViewProj = MathHelper::Identity4x4();
 /// </summary>
 void BoxApp::BuildConstantBuffers() {
 	mObjectCB = std::make_unique<UploadBuffer<ObjectConstants>>(md3dDevice.Get(), 1, true);
