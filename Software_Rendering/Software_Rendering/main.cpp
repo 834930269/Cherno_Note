@@ -1,11 +1,16 @@
 ﻿#include <vector>
 #include <limits>
 #include <iostream>
+#include<cmath>
 #include "tgaimage.h"
 #include "model.h"
 #include "geometry.h"
 #include "our_gl.h"
+#include "Helper.h"
 
+#define _HAS_CXX17
+
+#define PI 3.141592653589
 
 Model* model = NULL;
 float* shadowbuffer = NULL;
@@ -13,10 +18,13 @@ float* shadowbuffer = NULL;
 const int width = 800;
 const int height = 800;
 
-Vec3f light_dir(1, 1, 0);
+Vec3f light_dir(1, 6, 10);
 Vec3f eye(1, 1, 4);
 Vec3f center(0, 0, 0);
 Vec3f up(0, 1, 0);
+float rough = 1;
+float p = 1,sP = 0;
+float kd = 0.8f, ks = 0.2f;
 
 struct Shader : public IShader {
 	//下面有一些需要双pass的变量是通过上一个pass传入的
@@ -38,24 +46,73 @@ struct Shader : public IShader {
 		return gl_Vertex;
 	}
 
+	/// <summary>
+	/// BRDF中的D项
+	/// </summary>
+	float D_Function(float NdotH, float roughness) {
+		float a = roughness * roughness;
+		float a2 = a * a;
+		float NdotH2 = NdotH * NdotH;
+		float nom = a2;
+		float denom = (NdotH2 * (a2 - 1.0) + 1.0);
+		denom = PI * denom * denom;
+		return nom / denom;
+	}
+
+	float G_SchlickGGX(float NdotV, float K) {
+		return NdotV / Helper::lerp(NdotV, 1.0, K);
+	}
+
+	float G_Function(float NdotL,float NdotV,float roughness) {
+		float K = (1.0 + roughness) * (1.0 + roughness) / 8;
+		float ggx1 = G_SchlickGGX(NdotV, K);
+		float ggx2 = G_SchlickGGX(NdotL, K);
+		return ggx1 * ggx2;
+	}
+
+	/// <summary>
+	/// 菲涅尔项
+	/// </summary>
+	/// <param name="NdotV">表面法向量N与观察方向V</param>
+	/// <param name="F0"></param>
+	/// <returns></returns>
+	float fresnelSchlick(float NdotV, float F0) {
+		return F0 + (1.0 - F0) * std::pow(1.0- NdotV,5.0);
+	}
+
+
 	//bar是重心坐标,color是颜色
 	virtual bool fragment(Vec3f bar, TGAColor& color) {
 		//shadowmap_projetcion
-		Vec4f sb_p = uniform_Mshadow * embed<4>(varying_tri * bar);
+		Vec3f pos = varying_tri * bar;
+		Vec4f sb_p = uniform_Mshadow * embed<4>(pos);
 		sb_p = sb_p / sb_p[3];
 		int idx = int(sb_p[0]) + int(sb_p[1]) * width;	//shadowbubffer数组的index,x,y坐标到一维index
 		//shadow表示被遮挡的程度吧,硬阴影
-		float shadow = .3 + .7 * (shadowbuffer[idx] < sb_p[2]+43.44);//magic coeff
+		float shadow = (.3 + .7 * (shadowbuffer[idx] < sb_p[2]+43.44))/255.0;//magic coeff
 		Vec2f uv = varying_uv * bar;	//计算当前pixel的uv坐标 
 		Vec3f n = proj<3>(uniform_MIT * embed<4>(model->normal(uv))).normalize();	//法线
 		Vec3f l = proj<3>(uniform_M * embed<4>(light_dir)).normalize();	//光向量
 		Vec3f r = (n * (n * l * 2.f) - l).normalize();   // 光反射方向
-		float spec = pow(std::max(r.z, 0.0f), model->specular(uv));	//高光
-		float diff = std::max(0.f, n * l);
+		Vec3f view = (pos - eye).normalize();
+		Vec3f halfDir = (view + l).normalize();
 		TGAColor c = model->diffuse(uv);
-		for (int i = 0; i < 3; ++i) {
-			color[i] = std::min<float>(20 + c[i] * shadow * (1.2 * diff + .6 * spec), 255);
+		float NdotL = n * l,NdotV = n * view;
+		float G = G_Function(NdotL, NdotV, rough);
+		float D = D_Function(n*halfDir, rough);
+		float F = fresnelSchlick(NdotV, 0.15);
+		
+		for (int i = 0; i < 3; ++i) {//rgb
+			float tc = (1.0*c[i]) / 255.0 + shadow * sP;
+			//float tc = 1.0;//纯净材质
+			tc = std::min<float>(
+				(tc +(tc -(kd* tc + ks*D*F*G/(4*NdotL*NdotV)))*NdotL * p)
+				, 1.0);
+			//printf("%d ", color[i]);
+			tc = std::max<float>(tc, 0);
+			color[i] = tc * 255;
 		}
+		//printf("\n");
 		return false;	//不剪切
 	}
 };
