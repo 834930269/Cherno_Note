@@ -91,7 +91,9 @@ private:
     FrameResource* mCurrFrameResource = nullptr;
     int mCurrFrameResourceIndex = 0;
 
+    //RootSignature表示的是当前Shader所用到的GPU中的 描述符的集合
     ComPtr<ID3D12RootSignature> mRootSignature = nullptr;
+    //Descriptor只能存放到Heap上
     ComPtr<ID3D12DescriptorHeap> mCbvHeap = nullptr;
 
     ComPtr<ID3D12DescriptorHeap> mSrvDescriptorHeap = nullptr;
@@ -100,12 +102,13 @@ private:
     std::unordered_map<std::string, ComPtr<ID3DBlob>> mShaders;
     std::unordered_map<std::string, ComPtr<ID3D12PipelineState>> mPSOs;
 
+    //Shader的输入结构
     std::vector<D3D12_INPUT_ELEMENT_DESC> mInputLayout;
 
     // List of all the render items.
     std::vector<std::unique_ptr<RenderItem>> mAllRitems;
 
-    // Render items divided by PSO.
+    // Render items divided by PSO. Pipeline 
     std::vector<RenderItem*> mOpaqueRitems;
 
     PassConstants mMainPassCB;
@@ -486,12 +489,14 @@ void ShapesApp::BuildConstantBufferViews()
 
 void ShapesApp::BuildRootSignature()
 {
+    //描述符表
     CD3DX12_DESCRIPTOR_RANGE cbvTable0;
     cbvTable0.Init(D3D12_DESCRIPTOR_RANGE_TYPE_CBV, 1, 0);
 
     CD3DX12_DESCRIPTOR_RANGE cbvTable1;
     cbvTable1.Init(D3D12_DESCRIPTOR_RANGE_TYPE_CBV, 1, 1);
 
+    //描述符插槽
     // Root parameter can be a table, root descriptor or root constants.
     CD3DX12_ROOT_PARAMETER slotRootParameter[2];
 
@@ -499,10 +504,12 @@ void ShapesApp::BuildRootSignature()
     slotRootParameter[0].InitAsDescriptorTable(1, &cbvTable0);
     slotRootParameter[1].InitAsDescriptorTable(1, &cbvTable1);
 
+    //RootSignature是root Parameters的数组
     // A root signature is an array of root parameters.
     CD3DX12_ROOT_SIGNATURE_DESC rootSigDesc(2, slotRootParameter, 0, nullptr,
         D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT);
 
+    //RootSignature也需要序列化,传递到GPU和CPU的映射中
     // create a root signature with a single slot which points to a descriptor range consisting of a single constant buffer
     ComPtr<ID3DBlob> serializedRootSig = nullptr;
     ComPtr<ID3DBlob> errorBlob = nullptr;
@@ -514,7 +521,7 @@ void ShapesApp::BuildRootSignature()
         ::OutputDebugStringA((char*)errorBlob->GetBufferPointer());
     }
     ThrowIfFailed(hr);
-
+    //创建RootSignature,放到mRootSignature中
     ThrowIfFailed(md3dDevice->CreateRootSignature(
         0,
         serializedRootSig->GetBufferPointer(),
@@ -522,11 +529,26 @@ void ShapesApp::BuildRootSignature()
         IID_PPV_ARGS(mRootSignature.GetAddressOf())));
 }
 
+
+/// <summary>
+/// 构建Shader
+/// </summary>
 void ShapesApp::BuildShadersAndInputLayout()
 {
     mShaders["standardVS"] = d3dUtil::CompileShader(L"Shaders\\color.hlsl", nullptr, "VS", "vs_5_1");
     mShaders["opaquePS"] = d3dUtil::CompileShader(L"Shaders\\color.hlsl", nullptr, "PS", "ps_5_1");
 
+    //Shader的构建结构
+    //D3D12_INPUT_ELEMENT_DESC
+    //第一个参数SemanticName,代表的是shader中的名字,与着色器中的元素一一对应
+    //第二个参数SemanticIndex代表的是附加到Shader中的索引,如下面的index是0,则Shader中表现为: POSITION或POSITION0
+    // 如果是1,则表现为: POSITION1
+    //第三个参数代表指定顶点元素的格式(或内存分配类型)
+    //第四个参数是输入槽,D3D共支持16个输入槽
+    //第五个参数代表的是C++层中对应元素从0开始的内存偏移量
+    //第六个参数,顶点着色器暂时就是D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA,好像是输入技术
+    //第七个参数同样固定为0,和第六个参数同样是实例化高级参数可以变更
+    
     mInputLayout =
     {
         { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
@@ -534,6 +556,9 @@ void ShapesApp::BuildShadersAndInputLayout()
     };
 }
 
+/// <summary>
+/// 构建场景几何体
+/// </summary>
 void ShapesApp::BuildShapeGeometry()
 {
     GeometryGenerator geoGen;
@@ -593,6 +618,7 @@ void ShapesApp::BuildShapeGeometry()
         sphere.Vertices.size() +
         cylinder.Vertices.size();
 
+    //创建顶点集合
     std::vector<Vertex> vertices(totalVertexCount);
 
     UINT k = 0;
@@ -620,30 +646,37 @@ void ShapesApp::BuildShapeGeometry()
         vertices[k].Color = XMFLOAT4(DirectX::Colors::SteelBlue);
     }
 
+    //创建三角形索引集合
     std::vector<std::uint16_t> indices;
     indices.insert(indices.end(), std::begin(box.GetIndices16()), std::end(box.GetIndices16()));
     indices.insert(indices.end(), std::begin(grid.GetIndices16()), std::end(grid.GetIndices16()));
     indices.insert(indices.end(), std::begin(sphere.GetIndices16()), std::end(sphere.GetIndices16()));
     indices.insert(indices.end(), std::begin(cylinder.GetIndices16()), std::end(cylinder.GetIndices16()));
 
+    //计算顶点所需要的内存空间
     const UINT vbByteSize = (UINT)vertices.size() * sizeof(Vertex);
+    //计算三角形索引所需要的内存空间
     const UINT ibByteSize = (UINT)indices.size() * sizeof(std::uint16_t);
 
     auto geo = std::make_unique<MeshGeometry>();
     geo->Name = "shapeGeo";
 
+    // 生成顶点需要内存空间大小的Blob(CPU与GPU的交换部分)
     ThrowIfFailed(D3DCreateBlob(vbByteSize, &geo->VertexBufferCPU));
+    //拷贝内存
     CopyMemory(geo->VertexBufferCPU->GetBufferPointer(), vertices.data(), vbByteSize);
 
     ThrowIfFailed(D3DCreateBlob(ibByteSize, &geo->IndexBufferCPU));
     CopyMemory(geo->IndexBufferCPU->GetBufferPointer(), indices.data(), ibByteSize);
 
+    //GPU使用的是ID3DResource,创建默认(上传)缓冲区
     geo->VertexBufferGPU = d3dUtil::CreateDefaultBuffer(md3dDevice.Get(),
         mCommandList.Get(), vertices.data(), vbByteSize, geo->VertexBufferUploader);
 
     geo->IndexBufferGPU = d3dUtil::CreateDefaultBuffer(md3dDevice.Get(),
         mCommandList.Get(), indices.data(), ibByteSize, geo->IndexBufferUploader);
 
+    //这个Vertex是顶点着色器的输入(CPU->GPU)
     geo->VertexByteStride = sizeof(Vertex);
     geo->VertexBufferByteSize = vbByteSize;
     geo->IndexFormat = DXGI_FORMAT_R16_UINT;
@@ -665,7 +698,9 @@ void ShapesApp::BuildPSOs()
     // PSO for opaque objects.
     //
     ZeroMemory(&opaquePsoDesc, sizeof(D3D12_GRAPHICS_PIPELINE_STATE_DESC));
+    //将Shader的输入绑定到流水线上
     opaquePsoDesc.InputLayout = { mInputLayout.data(), (UINT)mInputLayout.size() };
+    //设置Shader的RootSignature
     opaquePsoDesc.pRootSignature = mRootSignature.Get();
     opaquePsoDesc.VS =
     {
@@ -712,6 +747,7 @@ void ShapesApp::BuildFrameResources()
 
 void ShapesApp::BuildRenderItems()
 {
+    //根据GPU中的数据,构建绘制Items
     auto boxRitem = std::make_unique<RenderItem>();
     XMStoreFloat4x4(&boxRitem->World, XMMatrixScaling(2.0f, 2.0f, 2.0f) * XMMatrixTranslation(0.0f, 0.5f, 0.0f));
     boxRitem->ObjCBIndex = 0;
